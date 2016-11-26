@@ -1,0 +1,17 @@
+<!--======== Button =========-->
+<div class="box-body">
+    <a class="btn btn-app" href="<?php echo $this->url('admin-user',array('action'=>'add')) ?>"> <i class="fa fa-plus-square-o"></i> Add </a>
+    <a class="btn btn-app" onclick="DevApp.submitRequest('publish')"> <i class="fa fa-arrow-circle-o-up"></i> Publish </a>
+    <a class="btn btn-app" onclick="DevApp.submitRequest('unpublish')"> <i class="fa fa-arrow-circle-o-down"></i> Unpublish </a>
+    <a class="btn btn-app delete-btn" onclick="confirmDelete()"> <i class="fa  fa-minus-square-o"></i> Delete </a>
+</div>
+<!--======== Button =========-->
+<script>
+    function confirmDelete(){
+        var txt;
+        var r = confirm("Do you want to delete ?");
+        if (r == true) {
+            DevApp.submitRequest('delete','/admin/user/delete-items')
+        }
+    }
+</script>

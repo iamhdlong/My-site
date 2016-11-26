@@ -1,0 +1,51 @@
+<?php echo $this->doctype(); ?>
+<html>
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Bootstrap 3.3.5 -->
+    <?php
+    echo $this->headTitle()->append('Admin');
+    echo $this->headMeta()->appendName('viewport', 'width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no')
+        ->setCharset('utf-8');
+    echo $this->headLink()->appendStylesheet(URL_ADMIN_CSS . '/bootstrap.min.css')
+        ->appendStylesheet(URL_ADMIN_CSS . '/font-awesome.min.css')
+        ->appendStylesheet(URL_ADMIN_CSS . '/ionicons.min.css')
+        ->appendStylesheet(URL_ADMIN_CSS . '/AdminLTE.min.css')
+        ->appendStylesheet(URL_ADMIN_CSS . '/_all-skins.min.css')
+        ->appendStylesheet(URL_ADMIN_CSS . '/_all.css')
+        ->appendStylesheet(URL_ADMIN_CSS . '/datepicker3.css')
+        ->appendStylesheet(URL_ADMIN_CSS . '/datepicker3.css')
+        ->appendStylesheet(URL_ADMIN_CSS . '/dataTables.bootstrap.css')
+        ->appendStylesheet(URL_ADMIN_CSS . '/bootstrap3-wysihtml5.min.css')
+        ->appendStylesheet(URL_ADMIN_CSS . '/blue.css')
+        ->appendStylesheet(URL_ADMIN_CSS . '/style.css');
+    ?>
+
+</head>
+<body class="hold-transition login-page">
+
+<div class="login-box">
+    <div class="login-logo">
+        <a href="../../index2.html"><b>Admin</b>LTE</a>
+    </div>
+
+        <?php echo $this->content; ?>
+
+</div>
+
+<?php
+echo $this->headScript()->appendFile(URL_ADMIN_JS . '/jQuery-2.1.4.min.js')
+    ->appendFile(URL_ADMIN_JS . '/jquery-ui.min.js')
+    ->appendFile(URL_ADMIN_JS . '/bootstrap.min.js')
+    ->appendFile(URL_ADMIN_JS . '/bootstrap-datepicker.js')
+    ->appendFile(URL_ADMIN_JS . '/bootstrap3-wysihtml5.all.min.js')
+    ->appendFile(URL_ADMIN_JS . '/app.min.js')
+    ->appendFile(URL_ADMIN_JS . '/icheck.min.js')
+    ->appendFile(URL_ADMIN_JS . '/demo.js')
+    ->appendFile(URL_ADMIN_JS . '/dev-general.js');
+?>
+<!--<script src="js/pages/dashboard.js"></script>-->
+
+
+</body>
+</html>

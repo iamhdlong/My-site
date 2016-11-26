@@ -1,0 +1,16 @@
+<?php echo $this->doctype();?>
+<html>
+	<head>
+		<?php 
+			// Title
+		echo $this->headTitle()->append('Error');
+        echo $this->headLink()->appendStylesheet(URL_TEMPLATE.'/error/css/bootstrap.min.css');
+        echo $this->headScript()->appendFile(URL_TEMPLATE.'/error/js/bootstrap.min.js');
+		?>
+	</head>
+	<body>
+		<div class="container">
+			<?php echo $this->content;?>
+		</div>
+	</body>
+</html>

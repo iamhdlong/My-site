@@ -1,0 +1,37 @@
+<?php echo $this->doctype(); ?>
+<html>
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <?php
+    echo $this->headTitle()->append('Admin');
+    echo $this->headMeta()->appendName('viewport', 'width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no')
+        ->setCharset('utf-8');
+    echo $this->headLink()->appendStylesheet(URL_FRONT_CSS . '/style.css');
+    ?>
+
+</head>
+
+<body>
+<div id="main">
+
+    <?php include "sections/header.phtml"; ?>
+    <div id="content_header"></div>
+    <div id="site_content">
+        <?php echo $this->BlockSidebar(); ?>
+        <?php echo $this->content; ?>
+    </div>
+
+    <div id="content_header"></div>
+    <?php include "sections/footer.phtml"; ?>
+
+
+</div>
+
+<?php
+echo $this->headScript()->appendFile(URL_FRONT_JS . '/dev.js');
+
+echo $this->inlineScript();
+?>
+
+</body>
+</html>

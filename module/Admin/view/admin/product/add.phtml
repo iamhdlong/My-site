@@ -1,0 +1,77 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: DangLongHo
+ */
+
+$items = $this->items;
+$form = $this->form;
+?>
+
+<section class="content">
+        <?php echo $this->form()->openTag($form); ?>
+
+        <?php echo $error ?>
+        <?php echo $this->partial('partial/addbutton.phtml'); ?>
+
+    <!--======== Table =========-->
+    <div class="box">
+        <div class="box-body">
+            <div class="col-sm-8">
+                <div class="form-group">
+                    <label for="inputEmail3" class="col-sm-2 control-label">Name</label>
+
+                    <div class="col-sm-10">
+                        <?php echo $this->formInput($form->get('name')); ?>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="inputEmail3" class="col-sm-2 control-label">Desc</label>
+
+                    <div class="col-sm-10">
+                        <?php echo $this->formTextArea($form->get('desc')); ?>
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <label for="inputEmail3" class="col-sm-2 control-label">Content</label>
+
+                    <div class="col-sm-10">
+                        <?php echo $this->formTextArea($form->get('content')); ?>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="inputEmail3" class="col-sm-2 control-label">Category</label>
+
+                    <div class="col-sm-10">
+                        <?php echo $this->formSelect($form->get('post_category')); ?>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="inputEmail3" class="col-sm-2 control-label">Status</label>
+                    <div class="col-sm-10">
+                        <?php echo $this->formSelect($form->get('status')); ?>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div><!-- /.box-body -->
+    </div>
+
+
+    <?php echo $this->form()->closeTag(); ?>
+</section><!-- /.content -->
+
+
+<!---->
+<?php echo $this->inlineScript()->captureStart();
+echo <<<JS
+    CKEDITOR.replace('content');
+JS;
+echo $this->inlineScript()->captureEnd() ?>

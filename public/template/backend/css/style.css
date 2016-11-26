@@ -1,0 +1,35 @@
+.box-body table th a{
+    width: 100%;
+    display: inline-block;
+    color: #5F5F5F;
+}
+
+.box-body table th a::after{
+    margin-top: -8px;
+}
+
+.cms-status{
+    padding: 3px 9px;
+    font-size: 12px;
+    color: #fff;
+    cursor: pointer;
+}
+.cms-status:hover, .cms-status:active{
+    color: #fff;
+}
+
+.offbg{
+    background: #6F6F6F;
+}
+
+.onbg{
+    background: #2FA02F;
+}
+
+.form-radio{
+    margin-right:20px ;
+}
+
+.form-radio:first-child{
+    margin-left: 60px;
+}

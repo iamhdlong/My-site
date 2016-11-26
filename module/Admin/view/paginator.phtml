@@ -1,0 +1,54 @@
+<?php
+if ($this->pageCount == 1) return '';
+// Link
+$this->currentURL	= $this->currentURL . '?page=';
+$linkStart		= $this->currentURL . $this->first;
+$linkEnd		= $this->currentURL . $this->last;
+$linkNext		= $this->currentURL . $this->next;
+$linkPrevious	= $this->currentURL . $this->previous;
+$currentPage = $_GET['page'];
+// Button
+$startXhtml		= '<li class="disabled"><a href="#">&laquo;</a></li>';
+$previousXhtml	= '<li class="disabled"><a href="#">Previous</a></li>';
+$nextXhtml		= '<li class="disabled"><a href="#">Next</a></li>';
+$endXhtml		= '<li class="disabled"><a href="#">&raquo;</a></li>';
+
+if($currentPage != 1){
+    $startXhtml		= sprintf('<li><a href="%s">&laquo;</a></li>', $linkStart);
+    $previousXhtml	= sprintf('<li><a href="%s">Previous</a></li>', $linkPrevious);
+}
+if(!$currentPage){
+    $startXhtml		= '<li class="disabled"><a href="#">&laquo;</a></li>';
+    $previousXhtml	= '<li class="disabled"><a href="#">Previous</a></li>';
+}
+
+if($currentPage != $this->last){
+    $nextXhtml		= sprintf('<li><a href="%s">Next</a></li>', $linkNext);
+    $endXhtml		= sprintf('<li><a href="%s">&raquo;</a></li>', $linkEnd);
+}
+
+$pagesInRange	= '';
+
+foreach ($this->pagesInRange as $key) {
+    $linkPage	=	$this->currentURL . $key;
+    $currentPage = $currentPage ? $currentPage : 1;
+    if($currentPage == $key) {
+        $pagesInRange	.= sprintf('<li class="active"><a href="#">%s <span class="sr-only">(current)</span></a></li>',$key);
+    }else{
+        $pagesInRange	.= sprintf('<li><a href="%s">%s</a></li>', $linkPage, $key);
+    }
+}
+?>
+
+<ul class="pagination">
+    <?php echo $startXhtml;?>
+    <?php echo $previousXhtml;?>
+    <!-- 	<li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
+        <li><a href="#">2</a></li>
+        <li><a href="#">3</a></li>
+        <li><a href="#">4</a></li>
+        <li><a href="#">5</a></li> -->
+    <?php echo $pagesInRange;?>
+    <?php echo $nextXhtml;?>
+    <?php echo $endXhtml;?>
+</ul>

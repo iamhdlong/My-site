@@ -1,0 +1,107 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: DangLongHo
+ */
+
+$items = $this->items;
+?>
+
+<section class="content">
+    <form class="index-cms-form" action="<?php //echo $this->url('admin-change-order-filter') ?>" method="post">
+
+        <?php echo $this->flashMessenger()->render() ?>
+        <?php echo $this->partial('partial/indexbutton.phtml'); ?>
+
+    <!--======== Table =========-->
+    <div class="box">
+        <div class="box-body">
+            <div id="example1_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="dataTables_length" id="example1_length">
+                            <label>Show
+                                <select name="example1_length" aria-controls="example1" class="form-control input-sm">
+                                    <option value="10">10</option>
+                                    <option value="25">25</option>
+                                    <option value="50">50</option>
+                                    <option value="100">100</option>
+                                </select>
+                            </label>
+                            <?php echo $this->FilterStatusElement('status',$this->dataOrderFilter['status'])?>
+                        </div>
+                    </div>
+                        <div id="example1_filter" class="dataTables_filter">
+
+                                <?php echo $this->SelectElement('filter_search_type',array('name'=>'Search by name','id'=>'Search by id'),$this->dataOrderFilter['searchType'],'--Search--')?>
+                                <input type="search" class="form-control input-sm" name="filter_search_value" placeholder="" value="<?=$this->dataOrderFilter['searchValue']?>">
+                            <button type="submit" class="btn btn-primary">Search</button>
+                            <button type="submit" class="btn" value="clear" name="clear_filter">Clear</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <table id="example1" class="table-hover table table-bordered table-striped dataTable" role="grid" aria-describedby="example1_info">
+                            <thead>
+                            <tr role="row">
+                                <td>
+                                    <span class="btn btn-default btn-sm checkbox-toggle"><i class="fa fa-square-o"></i></span>
+                                </td>
+
+                                <th><?php echo $this->linkSort('Id', $this->dataOrderFilter)?> </th>
+                                <th><?php echo $this->linkSort('Name', $this->dataOrderFilter)?> </th>
+                                <th>Status</th>
+                                <th><?php echo $this->linkSort('Order', $this->dataOrderFilter)?></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <?php foreach($items as $item): ?>
+                            <tr role="row" class="odd">
+                                <td>
+                                    <input type="checkbox" name="idcheck[]" value="<?php echo $item['id']?>">
+                                </td>
+                                <td class="sorting_1"><?=$item['id']?></td>
+                                <td>
+                                    <a href="<?php echo $this->url('admin-group-user',array('action'=>'edit','id'=>$item['id'])) ?>"><?=$item['name']?></td></a>
+                                <td>
+                                <?php echo $this->Status($item['id'], $item['status'])?>
+                                </td>
+                                <td><?php echo $item['order']?></td>
+
+<!--                                <td><label class="label label-default"><i class="fa fa-check"></i></label></td>-->
+                            </tr>
+                            <?php endforeach; ?>
+                            </tbody>
+
+                        </table>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-5">
+                        <div class="dataTables_info" id="example1_info" role="status" aria-live="polite">Showing 1 to 10 of 57 entries</div>
+                    </div>
+                    <div class="col-sm-7">
+                        <div class="dataTables_paginate paging_simple_numbers" id="example1_paginate">
+                            <?php
+                            $currentURL	= $this->url('admin-group-user');
+                            echo $this->paginationControl($this->paginator, 'sliding', 'paginator.phtml', array('currentURL'=> $currentURL));
+                            ?>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><!-- /.box-body -->
+    <!--======== Table =========-->
+        <input type="hidden" name="order_by" value=""/>
+        <input type="hidden" name="order" value=""/>
+        <input type="hidden" name="index_route" value="<?php echo $this->indexRoute ?>"/>
+        <!-- get type action -->
+        <input type="hidden" name="action_type" value=""/>
+
+
+    </form>
+</section><!-- /.content -->
+
