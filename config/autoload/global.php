@@ -18,8 +18,13 @@ return array(
         ),
     ),
     'view_helpers' => array(
-        'invokables' => array(
-            'BlockSidebar' => 'Blocks\BlockSidebar',
+        'factories' => array(
+            'BlockSidebar' => function($sm){
+                $model_post_category = $sm->getServiceLocator()->get('Admin\Model\PostCategory') ;
+                $block = new \Blocks\BlockSidebar($model_post_category);
+                $block->setData($model_post_category);
+                return $block;
+            },
 
         ),
     ),

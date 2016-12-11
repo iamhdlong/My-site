@@ -14,7 +14,7 @@ if(!class_exists('Zend\Loader\AutoloaderFactory')){
 			'autoregister_zf' => true,
             'namespaces' => array(
                 'Zendlib' => PATH_LIBRARY . '/Zendlib',
-                'Blocks' => PATH_TEMPLATE . '/frontend/blocks/sidebar'
+                'Blocks' => PATH_TEMPLATE . '/frontend/blocks'
                 ),
             'prefixes'		 => array(
                 'HTMLPurifier'	=> PATH_VENDOR . '/HTMLPurifier'

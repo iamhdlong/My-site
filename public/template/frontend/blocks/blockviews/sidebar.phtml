@@ -1,13 +1,17 @@
+<?php
+$categories = $this->data;
+?>
 <div id="sidebar_container">
     <div class="sidebar">
         <div class="sidebar_top"></div>
         <div class="sidebar_item">
-            <h3>Useful Links</h3>
+            <h3>Post category</h3>
             <ul>
-                <li><a href="#">link 1</a></li>
-                <li><a href="#">link 2</a></li>
-                <li><a href="#">link 3</a></li>
-                <li><a href="#">link 4</a></li>
+                <?php
+                foreach($categories as $key => $item):
+                ?>
+                <li><a href="#"><?php echo str_repeat('-',$item['level']-1). ' '. $item['name'] ?></a></li>
+                <?php endforeach; ?>
             </ul>
         </div>
         <div class="sidebar_base"></div>
