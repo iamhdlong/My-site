@@ -1,8 +1,11 @@
 <?php
-namespace Home;
+namespace User;
 
+use Zend\Db\TableGateway\Feature\GlobalAdapterFeature;
+use Zend\Mvc\ModuleRouteListener;
 use Zend\Mvc\MvcEvent;
-
+use Zend\Db\ResultSet\ResultSet;
+use Zend\Db\TableGateway\TableGateway;
 
 class Module
 {
@@ -38,7 +41,15 @@ class Module
     {
         return array(
             'factories' => array(
-
+                'User\Form\UserForm' => function ($sm) {
+                    $addForm = new \User\Form\UserForm\UserForm($sm);
+                    return $addForm;
+                },
+                'User\Model\User' => function ($sm) {
+                    $adapter = $sm->get('dbAdapter');
+                    $tableGateway = new TableGateway('b_user', $adapter, null);
+                    return new \User\Model\User($tableGateway);
+                },
 
             ),
         );

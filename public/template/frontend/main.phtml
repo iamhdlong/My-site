@@ -28,6 +28,7 @@
 </div>
 
 <?php
+echo $this->headScript()->appendFile(URL_FRONT_JS . '/jquery-3.1.1.min.js');
 echo $this->headScript()->appendFile(URL_FRONT_JS . '/dev.js');
 
 echo $this->inlineScript();
