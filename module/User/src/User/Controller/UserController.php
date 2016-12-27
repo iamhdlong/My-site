@@ -59,7 +59,7 @@ class UserController extends CoreFrontController{
                 }else{
                     $data	= $authenticateServiceObj->getAdapter()->getResultRowObject(null, array('password'));
                     $authenticateServiceObj->getStorage()->write($data);
-                    return $this->redirect()->toRoute('home');
+                    return $this->redirect()->toRoute('dashboard');
                 }
 
 
@@ -75,10 +75,16 @@ class UserController extends CoreFrontController{
 
     public function logoutAction(){
         $authenticateServiceObj	= new \Zend\Authentication\AuthenticationService();
-
         $authenticateServiceObj->clearIdentity();
-
         return false;
+    }
+
+    public function dashboardAction(){
+        if($this->identity()){
+
+        }else{
+            return $this->redirect()->toRoute('home');
+        }
     }
 
 

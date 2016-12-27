@@ -47,6 +47,17 @@ return array(
                     )
                 )
             ),
+            'dashboard' => array(
+                'type' => 'Literal',
+                'options' => array(
+                    'route' => '/user/dashboard',
+                    'defaults' => array(
+                        '__NAMESPACE__' => 'User\Controller',
+                        'controller' => 'User',
+                        'action' => 'dashboard'
+                    )
+                )
+            ),
 
         )
     )
