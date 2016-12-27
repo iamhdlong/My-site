@@ -36,5 +36,50 @@ class UserController extends CoreFrontController{
         );
     }
 
+    public function loginAction(){
+        $user_form = $this->getServiceLocator()->get('User\Form\LoginForm');
+
+
+        if($this->getRequest()->isPost()){
+            $data = $this->params()->fromPost();
+            $user_form->setData($data);
+           // if($user_form->isValid()){
+
+                $zendDb				= $this->getServiceLocator()->get('dbAdapter');
+                $dbTableAdapter		= new \Zend\Authentication\Adapter\DbTable($zendDb, 'b_user', 'email', 'password', 'MD5(?)');
+                $dbTableAdapter->getDbSelect()->where->equalTo('status', 1);
+                $authenticateServiceObj	= new \Zend\Authentication\AuthenticationService(null, $dbTableAdapter);
+                $authenticateServiceObj->getAdapter()->setIdentity($data['email']);
+                $authenticateServiceObj->getAdapter()->setCredential($data['password']);
+
+                $result	= $authenticateServiceObj->authenticate();
+
+                if(!$result->isValid()){
+                    $error = '<h3 style="color:red;">'.current($result->getMessages()).'</h3>';
+                }else{
+                    $data	= $authenticateServiceObj->getAdapter()->getResultRowObject(null, array('password'));
+                    $authenticateServiceObj->getStorage()->write($data);
+                    return $this->redirect()->toRoute('home');
+                }
+
+
+//            }else{
+//                $error =$user_form->showMessage();
+//            }
+        }
+        return array(
+            'form' => $user_form,
+            'error' => $error
+        );
+    }
+
+    public function logoutAction(){
+        $authenticateServiceObj	= new \Zend\Authentication\AuthenticationService();
+
+        $authenticateServiceObj->clearIdentity();
+
+        return false;
+    }
+
 
 }

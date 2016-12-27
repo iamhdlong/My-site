@@ -45,12 +45,19 @@ class Module
                     $addForm = new \User\Form\UserForm\UserForm($sm);
                     return $addForm;
                 },
+                'User\Form\LoginForm' => function ($sm) {
+                    $loginForm = new \User\Form\LoginForm\LoginForm($sm);
+                    return $loginForm;
+                },
                 'User\Model\User' => function ($sm) {
                     $adapter = $sm->get('dbAdapter');
                     $tableGateway = new TableGateway('b_user', $adapter, null);
                     return new \User\Model\User($tableGateway);
                 },
 
+            ),
+            'invokables' => array(
+                'Zend\Authentication\AuthenticationService' => 'Zend\Authentication\AuthenticationService',
             ),
         );
     }

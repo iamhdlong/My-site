@@ -1,0 +1,30 @@
+<?php
+$form = $this->form;
+$form->prepare();
+?>
+<div id="content">
+    <!-- insert the page content here -->
+    <?php echo $this->form()->openTag($form); ?>
+    <h1>User Login</h1>
+
+    <div>
+        <label for="">Email</label>
+        <?php echo $this->formInput($form->get('email')); ?>
+    </div>
+
+    <br>
+
+    <div>
+        <label for="">Password</label>
+        <?php echo $this->formInput($form->get('password')); ?>
+    </div>
+    <!--<a href="javascript:void(0)" onclick="App.submit('login-form')">Sign in</a>-->
+    <input type="submit" value="Sign in"/>
+
+    <p>
+        <?php if(!empty($this->error)) echo $this->error;?>
+        <?php echo $this->flashMessenger()->render();?>
+    </p>
+    <?php echo $this->form()->closeTag(); ?>
+
+</div>
