@@ -1,10 +1,11 @@
 <?php
 namespace Admin\Controller;
 
+use Core\Controller\CoreAdminController;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zendlib\Validator\StringLength;
 
-class IndexController extends AbstractActionController{
+class IndexController extends CoreAdminController{
     public function indexAction(){
 
        // return false;

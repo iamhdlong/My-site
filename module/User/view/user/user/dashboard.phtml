@@ -1,5 +1,5 @@
 <?php
-$user_inf = $this->identity();
+$user_inf = $this->layoutHelper()->getUserLoginInfo();
 ?>
 <div id="content">
 <p>Name: <?php echo $user_inf->name; ?></p>

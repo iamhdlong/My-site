@@ -64,7 +64,7 @@ $items = $this->items;
                                 </td>
                                 <td class="sorting_1"><?=$item['id']?></td>
                                 <td>
-                                    <a href="<?php echo $this->url('admin-post-category',array('action'=>'edit','id'=>$item['id'])) ?>">
+                                    <a href="<?php echo $this->url('admin-product-category',array('action'=>'edit','id'=>$item['id'])) ?>">
                                     <?= str_repeat('-',$item['level']-1). ' '. $item['name']?>
                                     </a>
                                 </td>

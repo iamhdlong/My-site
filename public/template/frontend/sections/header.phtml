@@ -1,3 +1,6 @@
+<?php
+$user = $this->layoutHelper()->getUserLoginInfo();
+?>
 <div id="header">
     <div id="logo">
         <div id="logo_text">
@@ -9,12 +12,16 @@
         <ul id="menu">
             <!-- put class="selected" in the li tag for the selected page - to highlight which page you're on -->
             <li class="selected"><a href="<?php echo $this->url('home') ?>">Home</a></li>
-            <?php if($this->identity()): ?>
+            <?php if ($user): ?>
                 <li>Hello <?php echo $this->identity()->name ?></li>
+                <?php if ($user->group == User\Model\User::GROUP_ADMIN): ?>
+                    <li> <a href="<?php echo $this->url('adminRoute') ?>">Admin CMS </a></li>
+                <?php endif; ?>
+
                 <li><a href="<?php echo $this->url('logout') ?>">Logout</a></li>
             <?php else: ?>
-            <li><a href="<?php echo $this->url('login') ?>">Login</a></li>
-            <li><a href="<?php echo $this->url('register') ?>">Register</a></li>
+                <li><a href="<?php echo $this->url('login') ?>">Login</a></li>
+                <li><a href="<?php echo $this->url('register') ?>">Register</a></li>
             <?php endif; ?>
 
         </ul>

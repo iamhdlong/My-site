@@ -42,6 +42,7 @@ class Module{
                 'FilterStatusElement' => '\Core\ViewHelper\FilterStatusElement',
                 'SelectElement' => '\Core\ViewHelper\SelectElement',
                 'Status' => '\Core\ViewHelper\Status',
+                'layoutHelper' => '\Core\ViewHelper\LayoutHelper',
             )
         );
     }

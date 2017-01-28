@@ -40,7 +40,7 @@ define('URL_FRONT_CSS', URL_TEMPLATE.'/frontend/css');
 
 define('URL_FRONT_JS', URL_TEMPLATE.'/frontend/js');
 
-
+define('USER_KEY_AUTH', 'KKHZDueuDo1gnyt88Adfe');
 
 
 ##paginator info
